@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import DrumPad from './DrumPad';
-import boom from '../audio/boom.wav';
 
 class DrumKit extends Component {
     handleHover = (ev) => {

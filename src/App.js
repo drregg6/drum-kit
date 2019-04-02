@@ -58,8 +58,24 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
+  findAudio = (key) => {
+    key = key.toLowerCase();
+    for (let i = 0; i < this.state.sounds.length; i++) {
+      if (this.state.sounds[i].key === key) {
+        return this.state.sounds[i];
+      }
+    }
+    return null;
+  }
 
+  handleKeyDown = (ev) => {
+    if (this.findAudio(ev.key)) {
+      this.findAudio(ev.key).audio.play();
+    }
+  }
+
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeyDown);
   }
 
   render() {
