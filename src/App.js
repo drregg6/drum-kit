@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Sound from 'react-sound';
-import logo from './logo.svg';
 import './App.css';
+import DrumKit from './components/DrumKit';
 
 import boom from './audio/boom.wav';
 import clap from './audio/clap.wav';
@@ -18,6 +18,44 @@ class App extends Component {
     super(props);
 
     this.state = {
+      sounds: [
+        {
+          key: 'q',
+          audio: new Audio(boom)
+        },
+        {
+          key: 'w',
+          audio: new Audio(clap)
+        },
+        {
+          key: 'e',
+          audio: new Audio(hihat)
+        },
+        {
+          key: 'a',
+          audio: new Audio(kick)
+        },
+        {
+          key: 's',
+          audio: new Audio(openhat)
+        },
+        {
+          key: 'd',
+          audio: new Audio(ride)
+        },
+        {
+          key: 'z',
+          audio: new Audio(snare)
+        },
+        {
+          key: 'x',
+          audio: new Audio(tink)
+        },
+        {
+          key: 'c',
+          audio: new Audio(tom)
+        },
+      ],
       playStatus: Sound.status.STOPPED,
       url: null
     }
@@ -100,20 +138,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <DrumKit
+          sounds={this.state.sounds}
+        />
         <Sound
           url={this.state.url}
           playStatus={this.state.playStatus}
