@@ -4,7 +4,6 @@ class Audio extends Component {
     render() {
         let {url} = this.props;
         const audioFile = `../audio/${url}.wav`;
-        console.log(url);
         return (
             <React.Fragment>
                 <audio url={audioFile}></audio>
