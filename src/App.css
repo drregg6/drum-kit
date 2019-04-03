@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+.display {
+  text-align: center;
+  margin: 60px auto;
+}
+
 .container {
   margin: 100px auto;
   width: 100%;
@@ -33,6 +38,7 @@
   flex: 2 1 200rem;
 }*/
 
+/* on keypress and on click */
 .drum-pad-keydown {
   /*flex: 2 1 200rem;*/
   background: red !important;

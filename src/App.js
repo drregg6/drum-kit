@@ -27,41 +27,51 @@ class App extends Component {
       sounds: [
         {
           key: 'Q',
-          audio: new Audio(boom)
+          audio: new Audio(boom),
+          display: 'BOOM'
         },
         {
           key: 'W',
-          audio: new Audio(clap)
+          audio: new Audio(clap),
+          display: 'CLAP'
         },
         {
           key: 'E',
-          audio: new Audio(hihat)
+          audio: new Audio(hihat),
+          display: 'HIHAT'
         },
         {
           key: 'A',
-          audio: new Audio(kick)
+          audio: new Audio(kick),
+          display: 'KICK'
         },
         {
           key: 'S',
-          audio: new Audio(openhat)
+          audio: new Audio(openhat),
+          display: 'OPENHAT'
         },
         {
           key: 'D',
-          audio: new Audio(ride)
+          audio: new Audio(ride),
+          display: 'RIDE'
         },
         {
           key: 'Z',
-          audio: new Audio(snare)
+          audio: new Audio(snare),
+          display: 'SNARE'
         },
         {
           key: 'X',
-          audio: new Audio(tink)
+          audio: new Audio(tink),
+          display: 'TINK'
         },
         {
           key: 'C',
-          audio: new Audio(tom)
+          audio: new Audio(tom),
+          display: 'TOM'
         },
-      ]
+      ],
+      display: ''
     }
   }
 
@@ -84,6 +94,9 @@ class App extends Component {
       let node = document.querySelector(`#${object.key}`);
       node.classList.add('drum-pad-keydown');
       object.audio.play();
+      this.setState({
+        display: object.display
+      })
     }
   }
   handleKeyUp = (ev) => {
@@ -93,6 +106,9 @@ class App extends Component {
         objects[i].classList.remove('drum-pad-keydown');
       }
     }
+    this.setState({
+      display: ''
+    })
   }
 
   componentDidMount() {
@@ -103,6 +119,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <div className="display">{this.state.display}</div>
         <DrumKit
           sounds={this.state.sounds}
         />
