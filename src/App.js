@@ -1,3 +1,10 @@
+/*
+
+- REDUX
+- when key is pressed, stop audio and play new audio
+
+*/
+
 import React, { Component } from 'react';
 import './App.css';
 import DrumKit from './components/DrumKit';
@@ -19,39 +26,39 @@ class App extends Component {
     this.state = {
       sounds: [
         {
-          key: 'q',
+          key: 'Q',
           audio: new Audio(boom)
         },
         {
-          key: 'w',
+          key: 'W',
           audio: new Audio(clap)
         },
         {
-          key: 'e',
+          key: 'E',
           audio: new Audio(hihat)
         },
         {
-          key: 'a',
+          key: 'A',
           audio: new Audio(kick)
         },
         {
-          key: 's',
+          key: 'S',
           audio: new Audio(openhat)
         },
         {
-          key: 'd',
+          key: 'D',
           audio: new Audio(ride)
         },
         {
-          key: 'z',
+          key: 'Z',
           audio: new Audio(snare)
         },
         {
-          key: 'x',
+          key: 'X',
           audio: new Audio(tink)
         },
         {
-          key: 'c',
+          key: 'C',
           audio: new Audio(tom)
         },
       ]
@@ -59,7 +66,7 @@ class App extends Component {
   }
 
   findAudio = (key) => {
-    key = key.toLowerCase();
+    key = key.toUpperCase();
     for (let i = 0; i < this.state.sounds.length; i++) {
       if (this.state.sounds[i].key === key) {
         return this.state.sounds[i];
@@ -70,12 +77,27 @@ class App extends Component {
 
   handleKeyDown = (ev) => {
     if (this.findAudio(ev.key)) {
-      this.findAudio(ev.key).audio.play();
+      // for (let i = 0; i < this.state.sounds; i++) {
+      //   this.state.sounds[i].audio.pause();
+      // }
+      let object = this.findAudio(ev.key);
+      let node = document.querySelector(`#${object.key}`);
+      node.classList.add('drum-pad-keydown');
+      object.audio.play();
+    }
+  }
+  handleKeyUp = (ev) => {
+    let objects = document.querySelectorAll('.drum-pad');
+    for (let i = 0; i < objects.length; i++) {
+      if (objects[i].classList.contains('drum-pad-keydown')) {
+        objects[i].classList.remove('drum-pad-keydown');
+      }
     }
   }
 
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyDown);
+    document.addEventListener('keyup', this.handleKeyUp);
   }
 
   render() {

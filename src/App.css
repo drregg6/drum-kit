@@ -24,11 +24,16 @@
   align-items: center;
   flex: 2 1 auto;
 
-  transition: flex .5s;
+  transition: background .15s;
 }
 .drum-pad:nth-child(even) {
   background: yellow;
 }
-.drum-pad:hover {
+/*.drum-pad:hover {
   flex: 2 1 200rem;
+}*/
+
+.drum-pad-keydown {
+  /*flex: 2 1 200rem;*/
+  background: red !important;
 }
