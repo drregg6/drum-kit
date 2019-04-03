@@ -102,6 +102,12 @@ class App extends Component {
     return null;
   }
 
+  setDisplay = (str='DRUM KIT') => {
+    this.setState({
+      display: str
+    })
+  }
+
 
 
   handleKeyDown = (ev) => {
@@ -117,17 +123,13 @@ class App extends Component {
       object.audio.play();
 
       // update the display
-      this.setState({
-        display: object.display
-      })
+      this.setDisplay(object.display);
     }
   }
   handleKeyUp = (ev) => {
     this.removeRedBG();
     // reset display
-    this.setState({
-      display: 'DRUM KIT'
-    })
+    this.setDisplay();
   }
 
 
@@ -147,6 +149,7 @@ class App extends Component {
           sounds={this.state.sounds}
           addRedBG={this.addRedBG}
           removeRedBG={this.removeRedBG}
+          setDisplay={this.setDisplay}
         />
       </div>
     );

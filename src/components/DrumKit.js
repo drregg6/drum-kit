@@ -3,13 +3,14 @@ import DrumPad from './DrumPad';
 
 class DrumKit extends Component {
     render() {
-        let {sounds} = this.props;
+        let {sounds, addRedBG, removeRedBG, setDisplay} = this.props;
         let soundList = sounds.map(sound => {
             return <DrumPad
                 key={sound.key}
                 sound={sound}
-                addRedBG={this.props.addRedBG}
-                removeRedBG={this.props.removeRedBG}
+                addRedBG={addRedBG}
+                removeRedBG={removeRedBG}
+                setDisplay={setDisplay}
             />
         });
         return (
