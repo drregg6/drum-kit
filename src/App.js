@@ -4,10 +4,16 @@
 
 */
 
+// react
 import React, { Component } from 'react';
 import './App.css';
 import DrumKit from './components/DrumKit';
 
+// redux
+import { Provider } from 'react-redux';
+import store from './store';
+
+// sounds
 import boom from './audio/boom.wav';
 import clap from './audio/clap.wav';
 import hihat from './audio/hihat.wav';
@@ -141,17 +147,19 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="display">
-          <h1>{this.state.display}</h1>
+      <Provider store={store}>
+        <div className="App">
+          <div className="display">
+            <h1>{this.state.display}</h1>
+          </div>
+          <DrumKit
+            sounds={this.state.sounds}
+            addRedBG={this.addRedBG}
+            removeRedBG={this.removeRedBG}
+            setDisplay={this.setDisplay}
+          />
         </div>
-        <DrumKit
-          sounds={this.state.sounds}
-          addRedBG={this.addRedBG}
-          removeRedBG={this.removeRedBG}
-          setDisplay={this.setDisplay}
-        />
-      </div>
+      </Provider>
     );
   }
 }
