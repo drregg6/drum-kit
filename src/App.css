@@ -4,7 +4,13 @@
 
 .display {
   text-align: center;
-  margin: 60px auto;
+  margin: 65px auto;
+}
+
+h1 {
+  font-weight: normal;
+  font-size: 2.5em;
+  letter-spacing: 2px;
 }
 
 .container {

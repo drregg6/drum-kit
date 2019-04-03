@@ -38,7 +38,7 @@ class App extends Component {
         {
           key: 'E',
           audio: new Audio(hihat),
-          display: 'HIHAT'
+          display: 'HI-HAT'
         },
         {
           key: 'A',
@@ -48,7 +48,7 @@ class App extends Component {
         {
           key: 'S',
           audio: new Audio(openhat),
-          display: 'OPENHAT'
+          display: 'OPEN HAT'
         },
         {
           key: 'D',
@@ -71,7 +71,7 @@ class App extends Component {
           display: 'TOM'
         },
       ],
-      display: ''
+      display: 'DRUM KIT'
     }
   }
 
@@ -107,7 +107,7 @@ class App extends Component {
       }
     }
     this.setState({
-      display: ''
+      display: 'DRUM KIT'
     })
   }
 
@@ -119,7 +119,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="display">{this.state.display}</div>
+        <div className="display">
+          <h1>{this.state.display}</h1>
+        </div>
         <DrumKit
           sounds={this.state.sounds}
         />
