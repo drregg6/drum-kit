@@ -74,7 +74,7 @@ class App extends Component {
           key: 'C',
           audio: new Audio(tom),
           display: 'TOM'
-        },
+        }
       ],
       display: 'DRUM KIT'
     }
