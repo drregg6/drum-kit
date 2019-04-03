@@ -45,7 +45,7 @@ h1 {
 }*/
 
 /* on keypress and on click */
-.drum-pad-keydown {
+.play-background {
   /*flex: 2 1 200rem;*/
   background: red !important;
 }

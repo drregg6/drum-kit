@@ -74,6 +74,24 @@ class App extends Component {
     }
   }
 
+
+
+  addRedBG = (obj) => {
+    let node = document.querySelector(`#${obj.key}`);
+    node.classList.add('play-background');
+  }
+
+  removeRedBG = () => {
+    let objects = document.querySelectorAll('.drum-pad');
+
+    // remove the red background
+    for (let i = 0; i < objects.length; i++) {
+      if (objects[i].classList.contains('play-background')) {
+        objects[i].classList.remove('play-background');
+      }
+    }
+  }
+
   findAudio = (key) => {
     key = key.toUpperCase();
     for (let i = 0; i < this.state.sounds.length; i++) {
@@ -84,13 +102,14 @@ class App extends Component {
     return null;
   }
 
+
+
   handleKeyDown = (ev) => {
     if (this.findAudio(ev.key)) {
       // find the object in sounds and return the object
       let object = this.findAudio(ev.key);
       // update the node
-      let node = document.querySelector(`#${object.key}`);
-      node.classList.add('drum-pad-keydown');
+      this.addRedBG(object);
 
       // remove delay, restart from the beginning, and play
       if (!object.audio) return;
@@ -104,20 +123,14 @@ class App extends Component {
     }
   }
   handleKeyUp = (ev) => {
-    let objects = document.querySelectorAll('.drum-pad');
-
-    // remove the red background
-    for (let i = 0; i < objects.length; i++) {
-      if (objects[i].classList.contains('drum-pad-keydown')) {
-        objects[i].classList.remove('drum-pad-keydown');
-      }
-    }
-
+    this.removeRedBG();
     // reset display
     this.setState({
       display: 'DRUM KIT'
     })
   }
+
+
 
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyDown);
@@ -132,6 +145,8 @@ class App extends Component {
         </div>
         <DrumKit
           sounds={this.state.sounds}
+          addRedBG={this.addRedBG}
+          removeRedBG={this.removeRedBG}
         />
       </div>
     );
