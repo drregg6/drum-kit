@@ -1,7 +1,6 @@
 /*
 
 - REDUX
-- when key is pressed, stop audio and play new audio
 
 */
 
@@ -87,13 +86,18 @@ class App extends Component {
 
   handleKeyDown = (ev) => {
     if (this.findAudio(ev.key)) {
-      // for (let i = 0; i < this.state.sounds; i++) {
-      //   this.state.sounds[i].audio.pause();
-      // }
+      // find the object in sounds and return the object
       let object = this.findAudio(ev.key);
+      // update the node
       let node = document.querySelector(`#${object.key}`);
       node.classList.add('drum-pad-keydown');
+
+      // remove delay, restart from the beginning, and play
+      if (!object.audio) return;
+      object.audio.currentTime = 0;
       object.audio.play();
+
+      // update the display
       this.setState({
         display: object.display
       })
@@ -101,11 +105,15 @@ class App extends Component {
   }
   handleKeyUp = (ev) => {
     let objects = document.querySelectorAll('.drum-pad');
+
+    // remove the red background
     for (let i = 0; i < objects.length; i++) {
       if (objects[i].classList.contains('drum-pad-keydown')) {
         objects[i].classList.remove('drum-pad-keydown');
       }
     }
+
+    // reset display
     this.setState({
       display: 'DRUM KIT'
     })
