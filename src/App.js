@@ -8,6 +8,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import DrumKit from './components/DrumKit';
+import Header from './components/Header';
 
 // redux
 import { Provider } from 'react-redux';
@@ -149,11 +150,8 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="App">
-          <div className="display">
-            <h1>{this.state.display}</h1>
-          </div>
+          <Header />
           <DrumKit
-            sounds={this.state.sounds}
             addRedBG={this.addRedBG}
             removeRedBG={this.removeRedBG}
             setDisplay={this.setDisplay}
