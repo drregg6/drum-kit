@@ -13,7 +13,7 @@ export default function DrumPad({sound, addRedBG, removeRedBG, setDisplay, playA
         // update display
         setDisplay(sound.display);
 
-        playAudio();
+        playAudio(sound.key);
     }
     const handleMouseUp = (ev) => {
         // remove background

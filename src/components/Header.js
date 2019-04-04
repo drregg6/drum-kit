@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
+// redux
 import { connect } from 'react-redux';
+import { alterDisplay } from '../actions/displayActions';
 
 class Header extends Component {
+    handleMouseDown = (ev) => {
+        this.props.alterDisplay('random string');
+    }
+
     render() {
         return (
           <div className="display">
-            <h1>{this.props.display}</h1>
+            <h1 onMouseDown={this.handleMouseDown}>{this.props.display}</h1>
           </div>
         )
     }
@@ -17,4 +23,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, { alterDisplay })(Header);

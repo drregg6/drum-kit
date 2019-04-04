@@ -64,7 +64,8 @@ const initialState = {
 export default function(state = initialState, action) {
     switch (action.type) {
         case PLAY_AUDIO:
-            console.log(action.payload)
+            console.log(action.payload);
+            return state;
         default:
             return state;
     }
