@@ -28,56 +28,56 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      sounds: [
-        {
-          key: 'Q',
-          audio: new Audio(boom),
-          display: 'BOOM'
-        },
-        {
-          key: 'W',
-          audio: new Audio(clap),
-          display: 'CLAP'
-        },
-        {
-          key: 'E',
-          audio: new Audio(hihat),
-          display: 'HI-HAT'
-        },
-        {
-          key: 'A',
-          audio: new Audio(kick),
-          display: 'KICK'
-        },
-        {
-          key: 'S',
-          audio: new Audio(openhat),
-          display: 'OPEN HAT'
-        },
-        {
-          key: 'D',
-          audio: new Audio(ride),
-          display: 'RIDE'
-        },
-        {
-          key: 'Z',
-          audio: new Audio(snare),
-          display: 'SNARE'
-        },
-        {
-          key: 'X',
-          audio: new Audio(tink),
-          display: 'TINK'
-        },
-        {
-          key: 'C',
-          audio: new Audio(tom),
-          display: 'TOM'
-        }
-      ],
-      display: 'DRUM KIT'
-    }
+  //   this.state = {
+  //     sounds: [
+  //       {
+  //         key: 'Q',
+  //         audio: new Audio(boom),
+  //         display: 'BOOM'
+  //       },
+  //       {
+  //         key: 'W',
+  //         audio: new Audio(clap),
+  //         display: 'CLAP'
+  //       },
+  //       {
+  //         key: 'E',
+  //         audio: new Audio(hihat),
+  //         display: 'HI-HAT'
+  //       },
+  //       {
+  //         key: 'A',
+  //         audio: new Audio(kick),
+  //         display: 'KICK'
+  //       },
+  //       {
+  //         key: 'S',
+  //         audio: new Audio(openhat),
+  //         display: 'OPEN HAT'
+  //       },
+  //       {
+  //         key: 'D',
+  //         audio: new Audio(ride),
+  //         display: 'RIDE'
+  //       },
+  //       {
+  //         key: 'Z',
+  //         audio: new Audio(snare),
+  //         display: 'SNARE'
+  //       },
+  //       {
+  //         key: 'X',
+  //         audio: new Audio(tink),
+  //         display: 'TINK'
+  //       },
+  //       {
+  //         key: 'C',
+  //         audio: new Audio(tom),
+  //         display: 'TOM'
+  //       }
+  //     ],
+  //     display: 'DRUM KIT'
+  //   }
   }
 
 

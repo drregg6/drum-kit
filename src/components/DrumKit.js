@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DrumPad from './DrumPad';
+import { connect } from 'react-redux';
 
 class DrumKit extends Component {
     render() {
@@ -21,4 +22,10 @@ class DrumKit extends Component {
     }
 }
 
-export default DrumKit;
+const mapStateToProps = (state) => {
+    return {
+        sounds: state.audio.sounds
+    }
+}
+
+export default connect(mapStateToProps)(DrumKit);
