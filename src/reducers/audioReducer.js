@@ -1,4 +1,4 @@
-import { GET_AUDIO } from '../actions/types';
+import { PLAY_AUDIO } from '../actions/types';
 
 // sounds
 import boom from '../audio/boom.wav';
@@ -63,6 +63,8 @@ const initialState = {
 
 export default function(state = initialState, action) {
     switch (action.type) {
+        case PLAY_AUDIO:
+            console.log(action.payload)
         default:
             return state;
     }

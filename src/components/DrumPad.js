@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function DrumPad({sound, addRedBG, removeRedBG, setDisplay}) {
+export default function DrumPad({sound, addRedBG, removeRedBG, setDisplay, playAudio}) {
     const handleMouseDown = (ev) => {
         // reset audio and play from the beginning
         if (!sound.audio) return;
@@ -12,6 +12,8 @@ export default function DrumPad({sound, addRedBG, removeRedBG, setDisplay}) {
 
         // update display
         setDisplay(sound.display);
+
+        playAudio();
     }
     const handleMouseUp = (ev) => {
         // remove background

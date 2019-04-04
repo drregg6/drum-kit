@@ -1,5 +1,9 @@
-import { GET_AUDIO } from './types';
+import { PLAY_AUDIO } from './types';
 
-export const fetchAudio = (key) => dispatch => {
+export const playAudio = (key) => dispatch => {
     console.log('fetching...');
+    dispatch({
+        type: PLAY_AUDIO,
+        payload: 'hello world!'
+    })
 }

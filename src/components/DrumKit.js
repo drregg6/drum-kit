@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import DrumPad from './DrumPad';
+// redux
 import { connect } from 'react-redux';
+import { playAudio } from '../actions/audioActions';
 
 class DrumKit extends Component {
+    // handleClick = (ev) => {
+    //     this.props.playAudio();
+    // }
+
     render() {
         let {sounds, addRedBG, removeRedBG, setDisplay} = this.props;
         let soundList = sounds.map(sound => {
@@ -12,6 +18,7 @@ class DrumKit extends Component {
                 addRedBG={addRedBG}
                 removeRedBG={removeRedBG}
                 setDisplay={setDisplay}
+                playAudio={this.props.playAudio}
             />
         });
         return (
@@ -28,4 +35,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(DrumKit);
+export default connect(mapStateToProps, { playAudio })(DrumKit);
