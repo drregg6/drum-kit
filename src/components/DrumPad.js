@@ -1,32 +1,40 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { changeDisplay } from '../actions/displayActions';
 
-export default function DrumPad({sound, addRedBG, removeRedBG, setDisplay, playAudio, alterDisplay}) {
-    const handleMouseDown = (ev) => {
-        // reset audio and play from the beginning
-        if (!sound.audio) return;
-        sound.audio.currentTime = 0;
-        sound.audio.play();
-
-        // add background
-        addRedBG(sound);
-
-        // update display
-        setDisplay(sound.display);
-
-        playAudio(sound.key);
-    }
-    const handleMouseUp = (ev) => {
-        // remove background
-        removeRedBG();
-
-        // update display
-        setDisplay();
+class DrumPad extends Component {
+    constructor(props) {
+        super(props);
     }
 
-    return (
-        <div className="drum-pad"id={sound.key.toUpperCase()} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp}>
-            <audio url={sound.audio}></audio>
-            {sound.key.toUpperCase()}
-        </div>
-    )
+    handleMouseDown = (ev) => {
+        this.props.changeDisplay(this.props.sound.display);
+
+        if (!this.props.sound.audio) return;
+        this.props.sound.audio.currentTime = 0;
+        this.props.sound.audio.play();
+
+        this.props.setDisplay(this.props.sound.display);
+        this.props.addRedBG(this.props.sound);
+
+        this.props.playAudio(this.props.sound.key);
+    }
+
+    handleMouseUp = (ev) => {
+        this.props.changeDisplay();
+        this.props.removeRedBG();
+        this.props.setDisplay();
+    }
+
+    render() {
+        const { sound, addRedBG, removeRedBG, setDisplay, playAudio } = this.props;
+        return (
+            <div className="drum-pad" id={sound.key.toUpperCase()} onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp}>
+                <audio url={sound.audio}></audio>
+                {sound.key.toUpperCase()}
+            </div>
+        )
+    }
 }
+
+export default connect(null, { changeDisplay })(DrumPad);

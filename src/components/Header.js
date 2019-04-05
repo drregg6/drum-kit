@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 // redux
 import { connect } from 'react-redux';
-import { alterDisplay } from '../actions/displayActions';
+import { changeDisplay } from '../actions/displayActions';
 
 class Header extends Component {
     handleMouseDown = (ev) => {
-        console.log()
+        changeDisplay('Dave Regg')
     }
 
     render() {
@@ -23,4 +23,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { alterDisplay })(Header);
+export default connect(mapStateToProps, { changeDisplay })(Header);
