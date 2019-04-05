@@ -14,7 +14,7 @@ class DrumPad extends Component {
         this.props.sound.audio.currentTime = 0;
         this.props.sound.audio.play();
 
-        this.props.setDisplay(this.props.sound.display);
+        this.props.changeDisplay(this.props.sound.display);
         this.props.addRedBG(this.props.sound);
 
         this.props.playAudio(this.props.sound.key);
@@ -23,11 +23,11 @@ class DrumPad extends Component {
     handleMouseUp = (ev) => {
         this.props.changeDisplay();
         this.props.removeRedBG();
-        this.props.setDisplay();
+        this.props.changeDisplay();
     }
 
     render() {
-        const { sound, addRedBG, removeRedBG, setDisplay, playAudio } = this.props;
+        const { sound, addRedBG, removeRedBG, playAudio } = this.props;
         return (
             <div className="drum-pad" id={sound.key.toUpperCase()} onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp}>
                 <audio url={sound.audio}></audio>
