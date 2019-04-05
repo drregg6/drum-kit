@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import DrumPad from './DrumPad';
 // redux
 import { connect } from 'react-redux';
-import { playAudio } from '../actions/audioActions';
 import { changeDisplay } from '../actions/displayActions';
 
 class DrumKit extends Component {
@@ -12,12 +11,12 @@ class DrumKit extends Component {
     }
 
     removeRedBG = () => {
-        let objects = document.querySelectorAll('.drum-pad');
+        let nodes = document.querySelectorAll('.drum-pad');
 
         // remove the red background
-        for (let i = 0; i < objects.length; i++) {
-            if (objects[i].classList.contains('play-background')) {
-                objects[i].classList.remove('play-background');
+        for (let i = 0; i < nodes.length; i++) {
+            if (nodes[i].classList.contains('play-background')) {
+                nodes[i].classList.remove('play-background');
             }
         }
     }
@@ -60,7 +59,6 @@ class DrumKit extends Component {
                 sound={sound}
                 addRedBG={this.addRedBG}
                 removeRedBG={this.removeRedBG}
-                playAudio={this.props.playAudio}
             />
         });
         return (
@@ -77,4 +75,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { playAudio, changeDisplay })(DrumKit);
+export default connect(mapStateToProps, { changeDisplay })(DrumKit);
