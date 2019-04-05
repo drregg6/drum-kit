@@ -5,7 +5,7 @@ import { alterDisplay } from '../actions/displayActions';
 
 class Header extends Component {
     handleMouseDown = (ev) => {
-        this.props.alterDisplay('random string');
+        console.log()
     }
 
     render() {

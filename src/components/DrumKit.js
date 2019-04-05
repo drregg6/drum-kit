@@ -5,9 +5,6 @@ import { connect } from 'react-redux';
 import { playAudio } from '../actions/audioActions';
 
 class DrumKit extends Component {
-    // handleClick = (ev) => {
-    //     this.props.playAudio();
-    // }
 
     render() {
         let {sounds, addRedBG, removeRedBG, setDisplay} = this.props;

@@ -38,10 +38,11 @@ class App extends Component {
   }
 
   findAudio = (key) => {
+    let state = store.getState();
     key = key.toUpperCase();
-    for (let i = 0; i < this.state.sounds.length; i++) {
-      if (this.state.sounds[i].key === key) {
-        return this.state.sounds[i];
+    for (let i = 0; i < state.audio.sounds.length; i++) {
+      if (state.audio.sounds[i].key === key) {
+        return state.audio.sounds[i];
       }
     }
     return null;
@@ -56,6 +57,8 @@ class App extends Component {
 
 
   handleKeyDown = (ev) => {
+    console.log(store.getState());
+
     if (this.findAudio(ev.key)) {
       // find the object in sounds and return the object
       let object = this.findAudio(ev.key);
@@ -70,6 +73,7 @@ class App extends Component {
       // update the display
       this.setDisplay(object.display);
     }
+
   }
   handleKeyUp = (ev) => {
     this.removeRedBG();
